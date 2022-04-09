@@ -1,8 +1,3 @@
-'''
-Author: dota_st
-Date: 2022-03-23 17:27:50
-blog: www.wlhhlc.top
-'''
 import shutil
 import os
 import re
@@ -71,11 +66,11 @@ def main():
         print(f"\033[1;32m====================...Decrypting...========================\033[0m"+"\n")
         print(result+"\n")
         print(f"\033[1;32m============================================================\033[0m")
-        flag = re.findall(r'({[0-9]})',result)
+        flag = re.findall(r'(\$[a-zA-Z0-9]+{[0-9]\d{0,1}})',result)
         if flag:
             decode(fileName)
         else:
-            print(f"\033[1;34m[*]Decryption complete!\033[0m")
+            print("\033[1;34m[*]Decryption complete! save as {0}.de.php\033[0m".format(TempFileName))
             break
 
 if __name__ == '__main__':
