@@ -1,6 +1,12 @@
+'''
+Author: dota_st
+Date: 2022-03-23 17:27:50
+blog: www.wlhhlc.top
+'''
 import shutil
 import os
 import re
+import sys
 
 def decode(fileName):
     tempFile = "temp.php"
@@ -49,13 +55,17 @@ ______ |  |__ ______    |__| _____   \______ \   ____  ____  ____   __| _/____
 |   __/|___|  |   __/\__|  |__|_|  / /_______  /\___  \___  \____/\____ |\___  >
 |__|        \/|__|  \______|     \/          \/     \/    \/           \/    \/ 
 
+usage:  python3 phpjmDecode.py [fileName]
 Powered by dota_st
 Blog's: https://www.wlhhlc.top/
 """
     print(logo)
 
 def main():
-    fileName = "test.php"
+    originFileName = sys.argv[1]
+    TempFileName = originFileName.split('.')[0]
+    fileName = TempFileName+".de.php"
+    shutil.copyfile(originFileName, fileName)
     while(1):
         result = open(fileName,'r').read()
         print(f"\033[1;32m====================...Decrypting...========================\033[0m"+"\n")
